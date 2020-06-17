@@ -1,0 +1,8 @@
+ 
+sudo ln -s /usr/lib/x86_64-linux-gnu/libz3.so /usr/lib/libopcodes-2.34.so
+
+sudo ln -s /usr/lib/x86_64-linux-gnu/libopcodes-2.34-system.so /usr/lib/libopcodes-2.34.so
+
+sudo ln -s /usr/lib/x86_64-linux-gnu/libbfd-2.34-system.so /usr/lib/libbfd-2.34.so
+
+

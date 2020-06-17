@@ -1,0 +1,72 @@
+export PATH="/home/user/abc/android/toolchains/xpack-arm-none-eabi-gcc-9.2.1-1.1/bin:$PATH"
+
+#Proton Clang 11
+export KBUILD_BUILD_USER=Sid_key
+rm -rf out
+make mrproper
+PATH="/home/folder/android/toolchains/proton-clang/bin:$PATH"
+make O=out ARCH=arm64 santoni_treble_defconfig
+make -j$(nproc --all) O=out \
+	ARCH=arm64 \
+	CC=clang \
+	CROSS_COMPILE=aarch64-linux-gnu- \
+	CROSS_COMPILE_ARM32=arm-linux-gnueabi-
+
+
+
+#DragonTC 10.0
+rm -rf out
+make mrproper
+PATH="/home/folder/android/toolchains/dragontc-10.0/bin:$PATH"
+make O=out ARCH=arm64 santoni_defconfig
+make -j$(nproc --all) O=out \
+	ARCH=arm64 \
+	CC=clang \
+	CROSS_COMPILE=aarch64-linux-gnu- \
+	CROSS_COMPILE_ARM32=arm-linux-gnueabi- 
+     
+#AOSP CLANG 11.0     
+rm -rf out
+make mrproper
+PATH="/home/folder/android/toolchains/aosp-clang/bin:$PATH"
+make O=out ARCH=arm64 santoni_defconfig
+make -j$(nproc --all) O=out \
+    ARCH=arm64 \
+    CC=clang \
+    CLANG_TRIPLE=aarch64-linux-gnu- \
+    CROSS_COMPILE=aarch64-linux-android- \
+    CROSS_COMPILE_ARM32=arm-linux-androideabi-
+	
+	
+#Linaro 7.5
+export KBUILD_BUILD_USER=Sid_key
+rm -rf out
+make mrproper
+PATH="/home/user/abc/android/toolchains/gcc-linaro-7.5.0-2019.12-x86_64_aarch64-linux-gnu/bin:$PATH"
+make O=out ARCH=arm64 santoni_treble_defconfig
+make -j$(nproc --all) O=out \
+	ARCH=arm64 \
+	CC=clang \
+	CROSS_COMPILE=aarch64-linux-gnu-
+
+
+#GCC10
+export KBUILD_BUILD_USER=Sid_key
+rm -rf out
+make mrproper
+make O=out ARCH=arm64 santoni_defconfig
+make -j$(nproc --all) O=out \
+	ARCH=arm64 \
+	CROSS_COMPILE=aarch64-linux-gnu- \
+	CROSS_COMPILE_ARM32=arm-linux-gnueabi-
+
+#GCC9.2 ARM
+export KBUILD_BUILD_USER=Sid_key
+rm -rf out
+make mrproper
+PATH="/home/folder/android/toolchains/gcc-arm-9.2-2019.12-x86_64-aarch64-none-linux-gnu/bin:/home/folder/android/toolchains/gcc-arm-9.2-2019.12-x86_64-arm-none-linux-gnueabihf/bin:$PATH"
+make O=out ARCH=arm64 santoni_defconfig
+make -j$(nproc --all) O=out \
+	ARCH=arm64 \
+	CROSS_COMPILE=aarch64-none-linux-gnu- \
+	CROSS_COMPILE_ARM32=arm-none-linux-gnueabihf-
