@@ -1,0 +1,43 @@
+$ su
+
+$ nano /etc/modules-load.d/zram.conf
+
+zram
+
+$ nano /etc/modprobe.d/zram.conf
+
+options zram num_devices=12
+
+
+$ nano /etc/udev/rules.d/99-zram.rules
+
+KERNEL=="zram0", ATTR{disksize}="683Mb" RUN="/usr/bin/mkswap /dev/zram0", TAG+="systemd"
+KERNEL=="zram1", ATTR{disksize}="683Mb" RUN="/usr/bin/mkswap /dev/zram1", TAG+="systemd"
+KERNEL=="zram2", ATTR{disksize}="683Mb" RUN="/usr/bin/mkswap /dev/zram2", TAG+="systemd"
+KERNEL=="zram3", ATTR{disksize}="683Mb" RUN="/usr/bin/mkswap /dev/zram3", TAG+="systemd"
+KERNEL=="zram4", ATTR{disksize}="683Mb" RUN="/usr/bin/mkswap /dev/zram4", TAG+="systemd"
+KERNEL=="zram5", ATTR{disksize}="683Mb" RUN="/usr/bin/mkswap /dev/zram5", TAG+="systemd"
+KERNEL=="zram6", ATTR{disksize}="683Mb" RUN="/usr/bin/mkswap /dev/zram6", TAG+="systemd"
+KERNEL=="zram7", ATTR{disksize}="683Mb" RUN="/usr/bin/mkswap /dev/zram7", TAG+="systemd"
+KERNEL=="zram8", ATTR{disksize}="683Mb" RUN="/usr/bin/mkswap /dev/zram8", TAG+="systemd"
+KERNEL=="zram9", ATTR{disksize}="683Mb" RUN="/usr/bin/mkswap /dev/zram9", TAG+="systemd"
+KERNEL=="zram10", ATTR{disksize}="683Mb" RUN="/usr/bin/mkswap /dev/zram10", TAG+="systemd"
+KERNEL=="zram11", ATTR{disksize}="683Mb" RUN="/usr/bin/mkswap /dev/zram11", TAG+="systemd"
+
+$ nano /etc/fstab
+
+/dev/zram0 none swap defaults 0 0
+/dev/zram1 none swap defaults 0 0
+/dev/zram2 none swap defaults 0 0
+/dev/zram3 none swap defaults 0 0
+/dev/zram4 none swap defaults 0 0
+/dev/zram5 none swap defaults 0 0
+/dev/zram6 none swap defaults 0 0
+/dev/zram7 none swap defaults 0 0
+/dev/zram8 none swap defaults 0 0
+/dev/zram9 none swap defaults 0 0
+/dev/zram10 none swap defaults 0 0
+/dev/zram11 none swap defaults 0 0
+
+$ echo "vm.swappiness=20" > /etc/sysctl.d/swap.conf
+
